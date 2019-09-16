@@ -3,7 +3,7 @@
 
 Quotes from: from https://www.awakenthegreatnesswithin.com/35-inspirational-quotes-time/
 
-1. Without IDF
+1. Without IDF (Inverse Document Frequency)
 
 **Time has a wonderful way of showing us what really matters**
 is similar to 
