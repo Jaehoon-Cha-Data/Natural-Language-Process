@@ -22,7 +22,7 @@ is similar to
 The way we spend our time defines who we are
 
 
-**3. Using Singular value decomposition(SVD) decomposition**
+**3. Using Singular Value Decomposition(SVD) decomposition**
 
 dataset =["cancer",
          "biology",
