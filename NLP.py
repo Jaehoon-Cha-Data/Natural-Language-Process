@@ -10,13 +10,13 @@ from https://www.awakenthegreatnesswithin.com/35-inspirational-quotes-time/
 """
 import numpy as np
 from scipy.spatial.distance import cosine
-
+import matplotlib.pyplot as plt
 ## call words
-fromtxt = []
+timetxt = []
 with open('time.txt', 'r', encoding = 'utf-8') as f:
     for ele in f:
         ele = ele.replace('\t', ' ').replace('\n', '').replace('.', '').replace("'", '').replace(",", '').lower()
-        fromtxt.append(ele)
+        timetxt.append(ele)
 
 all_words = []
 with open('time.txt', 'r', encoding = 'utf-8') as f:
@@ -45,9 +45,9 @@ def word_one_hot(char):
 
 #### sent to char
 tokens_dic = {}
-for i in range(len(fromtxt)):
-    if len(fromtxt[i]) != 0:
-        tokens_dic[i] = fromtxt[i].split()
+for i in range(len(timetxt)):
+    if len(timetxt[i]) != 0:
+        tokens_dic[i] = timetxt[i].split()
 #       
 #### sent to coding   
 def sent2cod(sent):
@@ -71,7 +71,7 @@ def IDF(words, sents):
         char2idf[w] = np.log10(len(sents)/w_count_sents)
     return char2idf             
 
-char2idf = IDF(unique_words, fromtxt)       
+char2idf = IDF(unique_words, timetxt)       
 
 #### cal TF_IDF -> 
 ##drawback: worse to handle synonym, frequent words have low similarity despite them import
@@ -90,9 +90,9 @@ for i in range(len(sents2codes)):
         sim_s2c_with_8th.append(cosine(sents2codes[k], sents2codes[i]))
         
 print("Sentence")
-print(fromtxt[k])
+print(timetxt[k])
 print("is similar to ")
-print(fromtxt[np.argmin(sim_s2c_with_8th)])
+print(timetxt[np.argmin(sim_s2c_with_8th)])
 
 sim_tf_idf_with_8th = []
 for i in range(len(sents2codes)):
@@ -100,9 +100,71 @@ for i in range(len(sents2codes)):
         sim_tf_idf_with_8th.append(cosine(tf_idf[k], tf_idf[i]))
         
 print("Sentence")
-print(fromtxt[k])
+print(timetxt[k])
 print("is similar to ")
-print(fromtxt[np.argmin(sim_tf_idf_with_8th)])
+print(timetxt[np.argmin(sim_tf_idf_with_8th)])
 
 
 
+### topic similarity
+topictxt = ["cancer",
+         "biology",
+         "cancer biology gene",
+         "cnn",
+         "rnn",
+         "cnn rnn ml"]
+
+topic_words = []
+for ele in topictxt:
+    ele_words = ele.split()
+    for word in ele_words:
+        topic_words.append(word)
+
+unique_topic_words = np.unique(topic_words)
+
+eye = np.eye(len(unique_topic_words))
+char2idx = {c: i for i, c in enumerate(unique_topic_words)}
+
+def Word_doc_mat(uniq_word, doc):
+    m = len(uniq_word)
+    n = len(doc)
+    mat = np.zeros(shape = (m,n))
+    for y in range(n):
+        cod = np.zeros(m)
+        sent = doc[y].split()
+        for w in sent:
+            cod += eye[char2idx[w]] 
+        mat[:,y] = np.transpose(cod)
+    return mat
+    
+    
+word_doc_mat = Word_doc_mat(unique_topic_words, topictxt)
+### U:word for topic, S:topic strength, Vt:Document for topic
+U, S, Vt = np.linalg.svd(Word_doc_mat(unique_topic_words, topictxt))
+
+LSAVec_2d = np.array([np.multiply(S[:2],np.abs(Vt)[:2,i]) 
+                        for i in range(len(topictxt))])
+
+coordi_memory = {}
+for i, sent in enumerate(topictxt):
+    x, y = np.round(LSAVec_2d[i][0], 4), np.round(LSAVec_2d[i][1], 4)
+    if (x, y) in coordi_memory:
+        coordi_memory[(x,y)] += 0.1
+    else:
+        coordi_memory[(x,y)]  = 0
+    if x>=y:
+        c = 'r'
+    else:
+        c = 'b'
+    plt.scatter(x, y, c = c)
+    plt.annotate(sent, (x, y+coordi_memory[(x,y)]))
+    
+cosine_sim_dist = []
+for i in range(1,len(topictxt)):
+    print("Distance inducded by Cosine Similarity between")
+    print("'",topictxt[0], "' and '", topictxt[i],"' is",
+          cosine(LSAVec_2d[0], LSAVec_2d[i]))
+
+
+
+ 
