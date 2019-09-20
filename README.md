@@ -18,3 +18,6 @@ is similar to
 is similar to 
 
 **The way we spend our time defines who we are**
+
+
+![embedding](https://user-images.githubusercontent.com/55184529/65324769-1c960480-dbe8-11e9-91d8-979dad917641.png)
