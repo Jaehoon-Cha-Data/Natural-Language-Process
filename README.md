@@ -19,5 +19,17 @@ is similar to
 
 **The way we spend our time defines who we are**
 
+3. Using Singular value decomposition(SVD) decomposition
+dataset = ["cancer",
+         "biology",
+         "cancer biology gene",
+         "cnn",
+         "rnn",
+         "cnn rnn ml"]
+
+![using svd decomposition](https://user-images.githubusercontent.com/55184529/65324958-96c68900-dbe8-11e9-92cd-f06be7407248.png)
+
+
+4. time set embeddings
 
 ![embedding](https://user-images.githubusercontent.com/55184529/65324769-1c960480-dbe8-11e9-91d8-979dad917641.png)
