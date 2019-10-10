@@ -42,10 +42,13 @@ dataset =["cancer",
 **5. Learning words with LSTM**
 
 ----------X-----------
+
 time is free but it’s priceless you can’t own it but you can use it you can’t keep it but you can spend it once you’ve lost it you can never get it back. the trouble is you think you have time. there’s only one thing more precious than our time and that’s who we spend it on. the greatest gift you can give someone is your time because when you give your time you are giving a portion of your life that you will never get back. you will never find time for anything if you want time you must make it. the two most powerful warriors are patience and time. we all make time for what we feel is important in our lives. time is precious make sure you spend it with the right people. time has a wonderful way of showing us what really matters. always make time for things that make you feel happy t
 
 ----------Y-----------
+
 ee but it’s priceless you can’t own it but you can use it you can’t keep it but you can spend it once you’ve lost it you can never get it back. the trouble is you think you have time. there’s only one thing more precious than our time and that’s who we spend it on. the greatest gift you can give someone is your time because when you give your time you are giving a portion of your life that you will never get back. you will never find time for anything if you want time you must make it. the two most powerful warriors are patience and time. we all make time for what we feel is important in our lives. time is precious make sure you spend it with the right people. time has a wonderful way of showing us what really matters. always make time for things that make you feel happy to be alive
 
 ------prediction-------
+
 ee but it’s priceless you can’t ~~k~~**o**wn it but you can ~~s~~**u**se it you ca~~n~~**n’** t keep it but you can spend it once you’ve lost it you can ~~s~~**n**ever get ~~b~~**i**t back. the trouble is you think you have time. there’s only one thing more precious than our time and that’s who we spend it on~~c~~**.** the greatest gift you can ~~s~~**g**ive someone is your time ~~y~~**b**ecause when you give your time you ~~m~~**a**re giving a portion of your life that you will never get back. you will never ~~g~~**f**ind time for ~~t~~**a**nything if you want time you must make it. the two most powerful warriors are patience and time. we all make time for ~~t~~**w**hat we feel is important in our lives. time is precious ~~t~~**m**ake sure you spend it ~~o~~**w**ith the right people. time has a wonderful way of showing us what really matters. always make time for things that make you feel happy to be alive
